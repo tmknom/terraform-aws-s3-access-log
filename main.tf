@@ -47,6 +47,23 @@ resource "aws_s3_bucket" "default" {
     }
   }
 
+  # To manage your objects so that they are stored cost effectively throughout their lifecycle, configure their lifecycle.
+  # https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html
+  lifecycle_rule {
+    enabled = "${var.lifecycle_rule_enabled}"
+    prefix  = "${var.lifecycle_rule_prefix}"
+
+    # For a versioned bucket, there are several considerations that guide how Amazon S3 handles the expiration action.
+    #   - The Expiration action applies only to the current version.
+    #   - S3 doesn't take any action if there are one or more object versions and the delete marker is the current version.
+    #   - If the current object version is the only object version and it is also a delete marker,
+    #     S3 removes the expired object delete marker.
+    # https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html
+    expiration {
+      days = "${var.expiration_days}"
+    }
+  }
+
   # A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error.
   # These objects are not recoverable.
   # https://www.terraform.io/docs/providers/aws/r/s3_bucket.html#force_destroy
