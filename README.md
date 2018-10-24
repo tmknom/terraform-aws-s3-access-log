@@ -22,6 +22,11 @@ module "s3_access_log" {
 
   versioning_enabled = false
   force_destroy      = true
+
+  tags = {
+    Environment = "prod"
+    Name        = "s3-access-log"
+  }
 }
 ```
 
@@ -36,6 +41,7 @@ module "s3_access_log" {
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------- | :----: | :-----: | :------: |
 | force_destroy      | A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. | string | `false` |    no    |
 | name               | The name of the bucket, which must comply with DNS naming conventions.                                                    | string |    -    |   yes    |
+| tags               | A mapping of tags to assign to the bucket.                                                                                |  map   | `<map>` |    no    |
 | versioning_enabled | Enable versioning. Versioning is a means of keeping multiple variants of an object in the same bucket.                    | string | `true`  |    no    |
 
 ## Outputs

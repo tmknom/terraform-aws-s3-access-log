@@ -8,4 +8,9 @@ module "s3_access_log" {
 
   versioning_enabled = false
   force_destroy      = true
+
+  tags = {
+    Environment = "prod"
+    Name        = "s3-access-log"
+  }
 }
