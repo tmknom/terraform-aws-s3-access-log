@@ -4,11 +4,25 @@ Terraform module template following [Standard Module Structure](https://www.terr
 
 ## Usage
 
-Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
+### Minimal
 
-```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-aws-s3-access-log/master/install | sh -s terraform-aws-sample
-cd terraform-aws-sample
+```hcl
+module "s3_access_log" {
+  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=master"
+  name   = "s3-access-log"
+}
+```
+
+### Complete
+
+```hcl
+module "s3_access_log" {
+  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=master"
+  name   = "s3-access-log"
+
+  versioning_enabled = false
+  force_destroy      = true
+}
 ```
 
 ## Examples
