@@ -38,4 +38,9 @@ resource "aws_s3_bucket" "default" {
       }
     }
   }
+
+  # A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error.
+  # These objects are not recoverable.
+  # https://www.terraform.io/docs/providers/aws/r/s3_bucket.html#force_destroy
+  force_destroy = "${var.force_destroy}"
 }
