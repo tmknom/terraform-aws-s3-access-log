@@ -37,6 +37,12 @@ variable "lifecycle_rule_prefix" {
   description = "Object key prefix identifying one or more objects to which the rule applies."
 }
 
+variable "glacier_transition_days" {
+  default     = "60"
+  type        = "string"
+  description = "Specifies a period in the object's Glacier transitions."
+}
+
 variable "expiration_days" {
   default     = "90"
   type        = "string"

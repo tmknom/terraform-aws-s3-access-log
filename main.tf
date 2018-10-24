@@ -53,6 +53,13 @@ resource "aws_s3_bucket" "default" {
     enabled = "${var.lifecycle_rule_enabled}"
     prefix  = "${var.lifecycle_rule_prefix}"
 
+    # The GLACIER storage class is suitable for archiving data where data access is infrequent.
+    # https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-glacier
+    transition {
+      days          = "${var.glacier_transition_days}"
+      storage_class = "GLACIER"
+    }
+
     # For a versioned bucket, there are several considerations that guide how Amazon S3 handles the expiration action.
     #   - The Expiration action applies only to the current version.
     #   - S3 doesn't take any action if there are one or more object versions and the delete marker is the current version.
