@@ -4,7 +4,7 @@
 
 variable "name" {
   type        = "string"
-  description = "The name of the bucket."
+  description = "The name of the bucket, which must comply with DNS naming conventions."
 }
 
 variable "versioning_enabled" {
