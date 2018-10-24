@@ -60,3 +60,9 @@ variable "glacier_noncurrent_version_transition_days" {
   type        = "string"
   description = "Specifies when noncurrent object versions transitions."
 }
+
+variable "noncurrent_version_expiration_days" {
+  default     = "60"
+  type        = "string"
+  description = "Specifies when noncurrent object versions expire."
+}

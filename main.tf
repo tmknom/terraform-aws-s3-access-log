@@ -83,6 +83,12 @@ resource "aws_s3_bucket" "default" {
       days          = "${var.glacier_noncurrent_version_transition_days}"
       storage_class = "GLACIER"
     }
+
+    # Specifies when noncurrent object versions expire.
+    # https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#intro-lifecycle-rules-actions
+    noncurrent_version_expiration {
+      days = "${var.noncurrent_version_expiration_days}"
+    }
   }
 
   # A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error.
