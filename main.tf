@@ -53,6 +53,13 @@ resource "aws_s3_bucket" "default" {
     enabled = "${var.lifecycle_rule_enabled}"
     prefix  = "${var.lifecycle_rule_prefix}"
 
+    # The STANDARD_IA and ONEZONE_IA storage classes are designed for long-lived and infrequently accessed data.
+    # https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-infreq-data-access
+    transition {
+      days          = "${var.standard_ia_transition_days}"
+      storage_class = "STANDARD_IA"
+    }
+
     # The GLACIER storage class is suitable for archiving data where data access is infrequent.
     # https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-glacier
     transition {
