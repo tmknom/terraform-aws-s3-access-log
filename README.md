@@ -1,14 +1,28 @@
 # terraform-aws-s3-access-log
 
-Terraform module template following [Standard Module Structure](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
+Terraform module which creates S3 Access Log Bucket resources on AWS.
 
 ## Usage
 
-Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
+### Minimal
 
-```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-aws-s3-access-log/master/install | sh -s terraform-aws-sample
-cd terraform-aws-sample
+```hcl
+module "s3_access_log" {
+  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=master"
+  name   = "s3-access-log"
+}
+```
+
+### Complete
+
+```hcl
+module "s3_access_log" {
+  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=master"
+  name   = "s3-access-log"
+
+  versioning_enabled = false
+  force_destroy      = true
+}
 ```
 
 ## Examples
@@ -18,11 +32,21 @@ cd terraform-aws-sample
 
 ## Inputs
 
-Write your Terraform module inputs.
+| Name               | Description                                                                                                               |  Type  | Default | Required |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------- | :----: | :-----: | :------: |
+| force_destroy      | A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. | string | `false` |    no    |
+| name               | The name of the bucket.                                                                                                   | string |    -    |   yes    |
+| versioning_enabled | Enable versioning. Versioning is a means of keeping multiple variants of an object in the same bucket.                    | string | `true`  |    no    |
 
 ## Outputs
 
-Write your Terraform module outputs.
+| Name                     | Description                                                            |
+| ------------------------ | ---------------------------------------------------------------------- |
+| s3_bucket_arn            | The ARN of the bucket. Will be of format arn:aws:s3:::bucketname.      |
+| s3_bucket_domain_name    | The bucket domain name. Will be of format bucketname.s3.amazonaws.com. |
+| s3_bucket_hosted_zone_id | The Route 53 Hosted Zone ID for this bucket's region.                  |
+| s3_bucket_id             | The name of the bucket.                                                |
+| s3_bucket_region         | The AWS region this bucket resides in.                                 |
 
 ## Development
 
