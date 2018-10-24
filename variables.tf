@@ -54,3 +54,9 @@ variable "expiration_days" {
   type        = "string"
   description = "Specifies a period in the object's expire."
 }
+
+variable "glacier_noncurrent_version_transition_days" {
+  default     = "30"
+  type        = "string"
+  description = "Specifies when noncurrent object versions transitions."
+}
