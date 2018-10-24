@@ -23,6 +23,14 @@ module "s3_access_log" {
   versioning_enabled = false
   force_destroy      = true
 
+  lifecycle_rule_enabled                     = true
+  lifecycle_rule_prefix                      = ""
+  standard_ia_transition_days                = "60"
+  glacier_transition_days                    = "90"
+  expiration_days                            = "180"
+  glacier_noncurrent_version_transition_days = "60"
+  noncurrent_version_expiration_days         = "90"
+
   tags = {
     Environment = "prod"
     Name        = "s3-access-log"
@@ -37,12 +45,19 @@ module "s3_access_log" {
 
 ## Inputs
 
-| Name               | Description                                                                                                               |  Type  | Default | Required |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------- | :----: | :-----: | :------: |
-| force_destroy      | A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. | string | `false` |    no    |
-| name               | The name of the bucket, which must comply with DNS naming conventions.                                                    | string |    -    |   yes    |
-| tags               | A mapping of tags to assign to the bucket.                                                                                |  map   | `<map>` |    no    |
-| versioning_enabled | Enable versioning. Versioning is a means of keeping multiple variants of an object in the same bucket.                    | string | `true`  |    no    |
+| Name                                       | Description                                                                                                               |  Type  | Default | Required |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | :----: | :-----: | :------: |
+| expiration_days                            | Specifies a period in the object's expire.                                                                                | string |  `90`   |    no    |
+| force_destroy                              | A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. | string | `false` |    no    |
+| glacier_noncurrent_version_transition_days | Specifies when noncurrent object versions transitions.                                                                    | string |  `30`   |    no    |
+| glacier_transition_days                    | Specifies a period in the object's Glacier transitions.                                                                   | string |  `60`   |    no    |
+| lifecycle_rule_enabled                     | Specifies lifecycle rule status.                                                                                          | string | `true`  |    no    |
+| lifecycle_rule_prefix                      | Object key prefix identifying one or more objects to which the rule applies.                                              | string | `` | no |
+| name                                       | The name of the bucket, which must comply with DNS naming conventions.                                                    | string |    -    |   yes    |
+| noncurrent_version_expiration_days         | Specifies when noncurrent object versions expire.                                                                         | string |  `60`   |    no    |
+| standard_ia_transition_days                | Specifies a period in the object's STANDARD_IA transitions.                                                               | string |  `30`   |    no    |
+| tags                                       | A mapping of tags to assign to the bucket.                                                                                |  map   | `<map>` |    no    |
+| versioning_enabled                         | Enable versioning. Versioning is a means of keeping multiple variants of an object in the same bucket.                    | string | `true`  |    no    |
 
 ## Outputs
 
