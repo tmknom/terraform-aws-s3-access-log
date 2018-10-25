@@ -19,7 +19,7 @@ This module builds secure, high availability and low cost S3 buckets.
 
 ```hcl
 module "s3_access_log" {
-  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=tags/v1.0.0"
+  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=tags/v1.1.0"
   name   = "s3-access-log"
 }
 ```
@@ -28,7 +28,7 @@ module "s3_access_log" {
 
 ```hcl
 module "s3_access_log" {
-  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=tags/v1.0.0"
+  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=tags/v1.1.0"
   name   = "s3-access-log"
 
   versioning_enabled = false
