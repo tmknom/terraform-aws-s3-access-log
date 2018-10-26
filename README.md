@@ -1,5 +1,9 @@
 # terraform-aws-s3-access-log
 
+[![CircleCI](https://circleci.com/gh/tmknom/terraform-aws-s3-access-log.svg?style=svg)](https://circleci.com/gh/tmknom/terraform-aws-s3-access-log)
+[![GitHub tag](https://img.shields.io/github/tag/tmknom/terraform-aws-s3-access-log.svg)](https://registry.terraform.io/modules/tmknom/s3-access-log/aws)
+[![License](https://img.shields.io/github/license/tmknom/terraform-aws-s3-access-log.svg)](https://opensource.org/licenses/Apache-2.0)
+
 Terraform module which creates S3 Access Log Bucket resources on AWS.
 
 ## Description
