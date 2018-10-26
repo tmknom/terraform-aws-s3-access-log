@@ -4,7 +4,7 @@
 [![GitHub tag](https://img.shields.io/github/tag/tmknom/terraform-aws-s3-access-log.svg)](https://registry.terraform.io/modules/tmknom/s3-access-log/aws)
 [![License](https://img.shields.io/github/license/tmknom/terraform-aws-s3-access-log.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Terraform module which creates S3 Access Log Bucket resources on AWS.
+Terraform module which creates S3 Bucket resources for [Access Log](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html) on AWS.
 
 ## Description
 
