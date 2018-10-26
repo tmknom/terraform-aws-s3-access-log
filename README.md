@@ -8,9 +8,7 @@ Terraform module which creates S3 Bucket resources for [Access Log](https://docs
 
 ## Description
 
-AWS recommend that you save access logs in a different bucket so that you can easily manage the logs.
-
-This module builds secure, high availability and low cost S3 buckets.
+Provision S3 bucket designed for Access Log. This module provides recommended settings.
 
 - Enable Default Encryption
 - Enable Versioning
