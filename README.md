@@ -4,11 +4,13 @@
 [![GitHub tag](https://img.shields.io/github/tag/tmknom/terraform-aws-s3-access-log.svg)](https://registry.terraform.io/modules/tmknom/s3-access-log/aws)
 [![License](https://img.shields.io/github/license/tmknom/terraform-aws-s3-access-log.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Terraform module which creates S3 Bucket resources for [Access Log](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html) on AWS.
+Terraform module which creates S3 Bucket resources for Access Log on AWS.
 
 ## Description
 
-Provision S3 bucket designed for Access Log. This module provides recommended settings.
+Provision [S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html) bucket
+designed for [Access Log](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html).
+This module provides recommended settings.
 
 - Enable Default Encryption
 - Enable Versioning
