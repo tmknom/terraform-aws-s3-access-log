@@ -8,7 +8,9 @@ Terraform module which creates S3 Bucket resources for Access Log on AWS.
 
 ## Description
 
-Provision S3 bucket designed for Access Log. This module provides recommended settings.
+Provision [S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html) bucket
+designed for [Access Log](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html).
+This module provides recommended settings.
 
 - Enable Default Encryption
 - Enable Versioning
