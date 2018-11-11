@@ -1,6 +1,6 @@
-# Resource Configuration
+# Terraform module which creates S3 Bucket resources for Access Log on AWS.
 #
-# https://www.terraform.io/docs/configuration/resources.html
+# https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html
 
 # https://www.terraform.io/docs/providers/aws/r/s3_bucket.html
 resource "aws_s3_bucket" "default" {
