@@ -1,6 +1,6 @@
 module "s3_access_log" {
   source = "../../"
-  name   = "s3-access-log"
+  name   = "s3-access-log-${random_id.suffix.dec}"
 
   versioning_enabled = false
   force_destroy      = true
@@ -15,6 +15,10 @@ module "s3_access_log" {
 
   tags = {
     Environment = "prod"
-    Name        = "s3-access-log"
+    Name        = "s3-access-log-${random_id.suffix.dec}"
   }
+}
+
+resource "random_id" "suffix" {
+  byte_length = 8
 }
