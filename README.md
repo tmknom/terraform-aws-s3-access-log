@@ -1,6 +1,9 @@
 # terraform-aws-s3-access-log
 
-[![CircleCI](https://circleci.com/gh/tmknom/terraform-aws-s3-access-log.svg?style=svg)](https://circleci.com/gh/tmknom/terraform-aws-s3-access-log)
+[![Terraform Actions Status](https://github.com/tmknom/terraform-aws-s3-access-log/workflows/Terraform/badge.svg)](https://github.com/tmknom/terraform-aws-s3-access-log/actions?query=workflow%3ATerraform)
+[![Markdown Actions Status](https://github.com/tmknom/terraform-aws-s3-access-log/workflows/Markdown/badge.svg)](https://github.com/tmknom/terraform-aws-s3-access-log/actions?query=workflow%3AMarkdown)
+[![YAML Actions Status](https://github.com/tmknom/terraform-aws-s3-access-log/workflows/YAML/badge.svg)](https://github.com/tmknom/terraform-aws-s3-access-log/actions?query=workflow%3AYAML)
+[![JSON Actions Status](https://github.com/tmknom/terraform-aws-s3-access-log/workflows/JSON/badge.svg)](https://github.com/tmknom/terraform-aws-s3-access-log/actions?query=workflow%3AJSON)
 [![GitHub tag](https://img.shields.io/github/tag/tmknom/terraform-aws-s3-access-log.svg)](https://registry.terraform.io/modules/tmknom/s3-access-log/aws)
 [![License](https://img.shields.io/github/license/tmknom/terraform-aws-s3-access-log.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -23,7 +26,7 @@ This module provides recommended settings.
 
 ```hcl
 module "s3_access_log" {
-  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=tags/1.0.0"
+  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=tags/2.0.0"
   name   = "s3-access-log"
 }
 ```
@@ -32,7 +35,7 @@ module "s3_access_log" {
 
 ```hcl
 module "s3_access_log" {
-  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=tags/1.0.0"
+  source = "git::https://github.com/tmknom/terraform-aws-s3-access-log.git?ref=tags/2.0.0"
   name   = "s3-access-log"
 
   versioning_enabled = false
@@ -58,21 +61,33 @@ module "s3_access_log" {
 - [Minimal](https://github.com/tmknom/terraform-aws-s3-access-log/tree/master/examples/minimal)
 - [Complete](https://github.com/tmknom/terraform-aws-s3-access-log/tree/master/examples/complete)
 
+## Requirements
+
+| Name      | Version |
+| --------- | ------- |
+| terraform | >= 0.12 |
+
+## Providers
+
+| Name | Version |
+| ---- | ------- |
+| aws  | n/a     |
+
 ## Inputs
 
-| Name                                       | Description                                                                                                               |  Type  | Default | Required |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | :----: | :-----: | :------: |
-| name                                       | The name of the bucket, which must comply with DNS naming conventions.                                                    | string |    -    |   yes    |
-| expiration_days                            | Specifies a period in the object's expire.                                                                                | string |  `90`   |    no    |
-| force_destroy                              | A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. | string | `false` |    no    |
-| glacier_noncurrent_version_transition_days | Specifies when noncurrent object versions transitions.                                                                    | string |  `30`   |    no    |
-| glacier_transition_days                    | Specifies a period in the object's Glacier transitions.                                                                   | string |  `60`   |    no    |
-| lifecycle_rule_enabled                     | Specifies lifecycle rule status.                                                                                          | string | `true`  |    no    |
-| lifecycle_rule_prefix                      | Object key prefix identifying one or more objects to which the rule applies.                                              | string | `` | no |
-| noncurrent_version_expiration_days         | Specifies when noncurrent object versions expire.                                                                         | string |  `60`   |    no    |
-| standard_ia_transition_days                | Specifies a period in the object's STANDARD_IA transitions.                                                               | string |  `30`   |    no    |
-| tags                                       | A mapping of tags to assign to the bucket.                                                                                |  map   |  `{}`   |    no    |
-| versioning_enabled                         | Enable versioning. Versioning is a means of keeping multiple variants of an object in the same bucket.                    | string | `true`  |    no    |
+| Name                                       | Description                                                                                                               | Type          | Default | Required |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | ------------- | ------- | :------: |
+| name                                       | The name of the bucket, which must comply with DNS naming conventions.                                                    | `string`      | n/a     |   yes    |
+| expiration_days                            | Specifies a period in the object's expire.                                                                                | `string`      | `"90"`  |    no    |
+| force_destroy                              | A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. | `string`      | `false` |    no    |
+| glacier_noncurrent_version_transition_days | Specifies when noncurrent object versions transitions.                                                                    | `string`      | `"30"`  |    no    |
+| glacier_transition_days                    | Specifies a period in the object's Glacier transitions.                                                                   | `string`      | `"60"`  |    no    |
+| lifecycle_rule_enabled                     | Specifies lifecycle rule status.                                                                                          | `string`      | `true`  |    no    |
+| lifecycle_rule_prefix                      | Object key prefix identifying one or more objects to which the rule applies.                                              | `string`      | `""`    |    no    |
+| noncurrent_version_expiration_days         | Specifies when noncurrent object versions expire.                                                                         | `string`      | `"60"`  |    no    |
+| standard_ia_transition_days                | Specifies a period in the object's STANDARD_IA transitions.                                                               | `string`      | `"30"`  |    no    |
+| tags                                       | A mapping of tags to assign to the bucket.                                                                                | `map(string)` | `{}`    |    no    |
+| versioning_enabled                         | Enable versioning. Versioning is a means of keeping multiple variants of an object in the same bucket.                    | `string`      | `true`  |    no    |
 
 ## Outputs
 
@@ -86,7 +101,7 @@ module "s3_access_log" {
 
 ## Development
 
-### Requirements
+### Development Requirements
 
 - [Docker](https://www.docker.com/)
 
@@ -109,21 +124,21 @@ make install
 ### Makefile targets
 
 ```text
+apply-complete                 Run terraform apply examples/complete
+apply-minimal                  Run terraform apply examples/minimal
 check-format                   Check format code
-cibuild                        Execute CI build
 clean                          Clean .terraform
+destroy-complete               Run terraform destroy examples/complete
+destroy-minimal                Run terraform destroy examples/minimal
+diff                           Word diff
 docs                           Generate docs
 format                         Format code
 help                           Show help
 install                        Install requirements
 lint                           Lint code
+plan-complete                  Run terraform plan examples/complete
+plan-minimal                   Run terraform plan examples/minimal
 release                        Release GitHub and Terraform Module Registry
-terraform-apply-complete       Run terraform apply examples/complete
-terraform-apply-minimal        Run terraform apply examples/minimal
-terraform-destroy-complete     Run terraform destroy examples/complete
-terraform-destroy-minimal      Run terraform destroy examples/minimal
-terraform-plan-complete        Run terraform plan examples/complete
-terraform-plan-minimal         Run terraform plan examples/minimal
 upgrade                        Upgrade makefile
 ```
 
