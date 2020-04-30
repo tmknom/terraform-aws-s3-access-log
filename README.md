@@ -61,21 +61,33 @@ module "s3_access_log" {
 - [Minimal](https://github.com/tmknom/terraform-aws-s3-access-log/tree/master/examples/minimal)
 - [Complete](https://github.com/tmknom/terraform-aws-s3-access-log/tree/master/examples/complete)
 
+## Requirements
+
+| Name      | Version |
+| --------- | ------- |
+| terraform | >= 0.12 |
+
+## Providers
+
+| Name | Version |
+| ---- | ------- |
+| aws  | n/a     |
+
 ## Inputs
 
-| Name                                       | Description                                                                                                               |  Type  | Default | Required |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | :----: | :-----: | :------: |
-| name                                       | The name of the bucket, which must comply with DNS naming conventions.                                                    | string |    -    |   yes    |
-| expiration_days                            | Specifies a period in the object's expire.                                                                                | string |  `90`   |    no    |
-| force_destroy                              | A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. | string | `false` |    no    |
-| glacier_noncurrent_version_transition_days | Specifies when noncurrent object versions transitions.                                                                    | string |  `30`   |    no    |
-| glacier_transition_days                    | Specifies a period in the object's Glacier transitions.                                                                   | string |  `60`   |    no    |
-| lifecycle_rule_enabled                     | Specifies lifecycle rule status.                                                                                          | string | `true`  |    no    |
-| lifecycle_rule_prefix                      | Object key prefix identifying one or more objects to which the rule applies.                                              | string | `` | no |
-| noncurrent_version_expiration_days         | Specifies when noncurrent object versions expire.                                                                         | string |  `60`   |    no    |
-| standard_ia_transition_days                | Specifies a period in the object's STANDARD_IA transitions.                                                               | string |  `30`   |    no    |
-| tags                                       | A mapping of tags to assign to the bucket.                                                                                |  map   |  `{}`   |    no    |
-| versioning_enabled                         | Enable versioning. Versioning is a means of keeping multiple variants of an object in the same bucket.                    | string | `true`  |    no    |
+| Name                                       | Description                                                                                                               | Type          | Default | Required |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | ------------- | ------- | :------: |
+| name                                       | The name of the bucket, which must comply with DNS naming conventions.                                                    | `string`      | n/a     |   yes    |
+| expiration_days                            | Specifies a period in the object's expire.                                                                                | `string`      | `"90"`  |    no    |
+| force_destroy                              | A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. | `string`      | `false` |    no    |
+| glacier_noncurrent_version_transition_days | Specifies when noncurrent object versions transitions.                                                                    | `string`      | `"30"`  |    no    |
+| glacier_transition_days                    | Specifies a period in the object's Glacier transitions.                                                                   | `string`      | `"60"`  |    no    |
+| lifecycle_rule_enabled                     | Specifies lifecycle rule status.                                                                                          | `string`      | `true`  |    no    |
+| lifecycle_rule_prefix                      | Object key prefix identifying one or more objects to which the rule applies.                                              | `string`      | `""`    |    no    |
+| noncurrent_version_expiration_days         | Specifies when noncurrent object versions expire.                                                                         | `string`      | `"60"`  |    no    |
+| standard_ia_transition_days                | Specifies a period in the object's STANDARD_IA transitions.                                                               | `string`      | `"30"`  |    no    |
+| tags                                       | A mapping of tags to assign to the bucket.                                                                                | `map(string)` | `{}`    |    no    |
+| versioning_enabled                         | Enable versioning. Versioning is a means of keeping multiple variants of an object in the same bucket.                    | `string`      | `true`  |    no    |
 
 ## Outputs
 
